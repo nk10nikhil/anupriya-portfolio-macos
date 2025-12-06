@@ -36,7 +36,7 @@ export default function Dock({
 
   return (
     <div
-      className={`dock fixed left-0 right-0 mx-auto w-full sm:w-max bottom-4 sm:bottom-2 ${
+      className={`dock fixed left-0 right-0 mx-auto w-full sm:w-max bottom-2 sm:bottom-0 ${
         hide ? "z-0 invisible" : "z-50 visible"
       } overflow-x-auto sm:overflow-visible scrollbar-hide`}
     >
