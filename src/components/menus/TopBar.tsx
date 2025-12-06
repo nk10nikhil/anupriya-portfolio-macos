@@ -85,7 +85,7 @@ const TopBar = (props: TopBarProps) => {
   /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
   const [audio, audioState, controls, audioRef] = useAudio({
     src: music.audio,
-    autoReplay: true
+    loop: true
   });
   const { winWidth, winHeight } = useWindowSize();
 
@@ -207,7 +207,7 @@ const TopBar = (props: TopBarProps) => {
       {/* Notch - Hidden on Mobile */}
       <div className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2">
         <div className="relative">
-          <img src="public\assets\icons\Сhelka.svg" alt="notch" className="w-36 h-auto" />
+          <img src="/assets/icons/Сhelka.svg" alt="notch" className="w-36 h-auto" />
           <span className="absolute left-2/3 top-2 size-1.5 rounded-full bg-green-500 shadow-lg shadow-green-500/50 animate-pulse" />
         </div>
       </div>
@@ -260,7 +260,13 @@ const TopBar = (props: TopBarProps) => {
         {state.showControlCenter && (
           <ControlCenterMenu
             playing={audioState.playing}
-            toggleAudio={controls.toggle}
+            toggleAudio={() => {
+              if (audioState.playing) {
+                controls.pause();
+              } else {
+                controls.play();
+              }
+            }}
             setVolume={setAudioVolume}
             setBrightness={setSiteBrightness}
             toggleControlCenter={toggleControlCenter}
